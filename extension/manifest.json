@@ -1,0 +1,11 @@
+{
+    "name": "STI Email Scanner",
+    "description": "An Email scanner to keep you safe!",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions":["scripting"],
+    "action": {
+        "default_popup": "popup.html"
+      }
+    }
+
