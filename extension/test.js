@@ -11,7 +11,7 @@ document.getElementById("startscan").addEventListener('click', async() =>
 
 function getEmail()
 {
-    alert(document.getElementsByClassName("go")[0].innerHTML);
+    alert(document.getElementsByClassName("gD")[0].getAttribute('email'));
 }
 
 
