@@ -3,7 +3,13 @@
     "description": "An Email scanner to keep you safe!",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions":["scripting"],
+    "content_scripts":[
+      {
+        "matches": ["*://*.gmail.com/*"],
+        "js" : ["contentscript.js"]
+      }
+    ],
+    "permissions":["activeTab","scripting"],
     "action": {
         "default_popup": "popup.html"
       }
