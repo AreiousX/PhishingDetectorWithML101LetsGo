@@ -8,6 +8,7 @@ function DOMtoString(document_root) {
     html = html.match(expression);
     html = html.join(" ");
     html = html.replace(/<a href=/g, '')
+    html = html.replace(/<a\s+(?:[^>]*?\s+)?href=/g, '')
     html = html.replace(/"/g, '')
     return html;
 }
