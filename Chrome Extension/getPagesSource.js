@@ -6,6 +6,9 @@ function DOMtoString(document_root) {
     var expression = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/g;
     var html = document.getElementsByClassName("a3s aiL")[0].innerHTML
     html = html.match(expression);
+    html = html.join(" ");
+    html = html.replace(/<a href=/g, '')
+    html = html.replace(/"/g, '')
     return html;
 }
 
