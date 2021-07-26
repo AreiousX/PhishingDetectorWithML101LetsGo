@@ -23,18 +23,19 @@ async def predict(input):
     predict = ' '.join(map(str, y_predict))
     if y_predict == [1]:
         output = {
+            "URL" : input,
             "result" : predict, 
             "probability" : (y_probability[0,1] * 100),
             }
         result = output
     else:
         output = {
+            "URL" : input,
             "result" : predict, 
             "probability" : (y_probability[0,0] * 100)
         }
         result = output
-        URL = {"URL" : input}
-        
-        return (URL, result)
+    
+    return (result)
 if __name__ == '__main__':
     uvicorn.run(app, host="127.0.0.1", port=2408)
