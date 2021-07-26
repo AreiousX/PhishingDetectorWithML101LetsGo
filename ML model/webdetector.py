@@ -1,11 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-FastAPI
 import joblib
-import os
-import numpy as np
-import json
-import sys
 from pydantic import BaseModel
 from typing import List
 
