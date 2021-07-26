@@ -1,1 +1,1 @@
-
+To run the python webapp, download both ```phishing_detector.pkl``` and ```webdetector.py```, point to the correct local path of ```phishing_detector.pkl``` then run ```webdetector.py```, submit requests via ```http://127.0.0.1:2408/?input=<url_to_detect>```
