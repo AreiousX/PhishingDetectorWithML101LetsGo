@@ -2,7 +2,7 @@ To run the python webapp, download both ```phishing_detector.pkl``` and ```webde
 
 Libraries needed: uvicorn. fastapi, joblib, pydantic, sklearn
 
-Follow the format here(0 is not malicious, 1 is malicious):
+Follow the format here (0 is not malicious, 1 is malicious):
 
 ![](Screenshot_1.png)
 
