@@ -2,17 +2,19 @@
 <html>
   <head>
     <script src="jquery-3.6.0.min.js"></script>
-    <title>Phishing Scanner</title>
     <script src="popup.js"></script>
   </head>
   <body style="width:600px;">
-    <h1>Phishing Scanner</h1>
-    <table id="urlTable">
+    <h1 style="text-align: center;">Malicious URL Scanner</h1>
+    <div id="urlCounter" style="display: flexbox; margin: auto; text-align: center;"></div>
+    <table id="urlTable" style="border: 1px solid black;">
       <tr>
-        <th>URL</th>
+        <th style="width: 1000px;">URL</th>
         <th>Prediction</th>
         <th>Probability</th>
+        <th></th>
       </tr>
     </table>
+      
   </body>
 </html>
