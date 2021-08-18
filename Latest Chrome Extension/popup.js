@@ -74,13 +74,18 @@
       
       
       const ipRegex = /\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b/;
-      const digitRegex = /\d{10}(\d+)?$/;
+      const ipwport = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):(6553[0-5]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9][0-9]|[1-5](\d){4}|[1-9](\d){0,3})$/;
+      const digitRegex = /\d{10}(\d+)?/;
       const directoryRegex = /\/\w{15,}\b/;
 
       if(uri[index].match(ipRegex))
         {
-          alert("IP address was found in");
+          alert("IP address was found in database");
         }
+      else if(uri[index].match(ipwport))
+      {
+        alert('IP address found in database');
+      }
       else if(uri[index].match(digitRegex))
       {
         alert("URL contains a long string of numbers");
@@ -89,7 +94,6 @@
       {
         alert("Directory is very long string")
       }
-
     }
 
     ); });
