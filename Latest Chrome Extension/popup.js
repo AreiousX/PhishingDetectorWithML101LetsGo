@@ -74,7 +74,7 @@
       
       
       const ipRegex = /\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b/;
-      const ipwport = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):(6553[0-5]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9][0-9]|[1-5](\d){4}|[1-9](\d){0,3})$/;
+      const ipwport = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):(6553[0-5]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9][0-9]|[1-5](\d){4}|[1-9](\d){0,3})/;
       const digitRegex = /\d{10}(\d+)?/;
       const directoryRegex = /\/\w{15,}\b/;
 
@@ -130,7 +130,7 @@
     }
     else{  
       var cell =
-        '<tr><td class="col0" style="background-color:lightgreen">' + url + '</td>' +
+        '<tr><td class="col0 maliciousLink" style="background-color:lightgreen">' + url + '</td>' +
         '<td class="col1" style="background-color:lightgreen">' + prediction + '</td>' +
         '<td class="col1" style="background-color:lightgreen">' + probability + '%</td></tr>'
     }
