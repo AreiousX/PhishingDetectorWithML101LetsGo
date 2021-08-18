@@ -40,6 +40,14 @@
     var totalCount = 0;
     var maliciousCount = 0;
     var uri = [];
+    var urlLengthNumber = [];
+    var ipDectNumber = [];
+    var atDectNumber = [];
+    var redirectDectNumber = [];
+    var urlDepthNumber = [];
+    var prefixSuffixDectNumber = [];
+    var shortenDetectNumber = [];
+    //uri2.push(response);
     const rString = ["Malicious ads on website","Link was found in database","Website was found to collect sensitive information","Sent from ap public email address","Invalid domain name","Domain Name is misspelt","Url is too long"];
     for (var i = 0; i < response.length; i++) {   
         var cell = formTableforDisplay(response[i]);
@@ -48,8 +56,16 @@
           maliciousCount++;
         }
         table.insertAdjacentHTML('beforeEnd', cell);
-
-        uri.push(document.getElementsByClassName('maliciousLink')[i].innerHTML);
+        if (response[i].result == 1){
+        urlLengthNumber.push(response[i].urlLength);
+        ipDectNumber.push(response[i].ipDetect);
+        atDectNumber.push(response[i].atDetect);
+        redirectDectNumber.push(response[i].redirectDetect);
+        urlDepthNumber.push(response[i].urlDepth);
+        prefixSuffixDectNumber.push(response[i].prefixSuffixDetect);
+        shortenDetectNumber.push(response[i].shortenDetect);
+        uri.push(response[i].URL);
+        }
         // alert(document.getElementsByClassName('maliciousLink')[i].innerHTML)
 
     }
@@ -73,26 +89,50 @@
     {
       
       
-      const ipRegex = /\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|)){4}\b/;
-      const ipwport = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):(6553[0-5]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9][0-9]|[1-5](\d){4}|[1-9](\d){0,3})/;
+      //const ipRegex = /\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b/;
+      //const ipwport = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):(6553[0-5]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9][0-9]|[1-5](\d){4}|[1-9](\d){0,3})$/;
       const digitRegex = /\d{10}(\d+)?/;
       const directoryRegex = /\/\w{15,}\b/;
 
-      if(uri[index].match(ipRegex))
+      if(uri[index].match(digitRegex))
         {
-          alert("IP address was found in database");
+          alert("URL contains long string of numbers");
         }
-      else if(uri[index].match(ipwport))
-      {
-        alert('IP address found in database');
-      }
-      else if(uri[index].match(digitRegex))
-      {
-        alert("URL contains a long string of numbers");
-      }
       else if(uri[index].match(directoryRegex))
       {
-        alert("Directory is very long string")
+        alert("Directory is very long string");
+      }
+      else if(ipDectNumber[index] == 1)
+      {
+        alert("IP address found in URL");
+      }
+      else if(atDectNumber[index] == 1)
+      {
+        alert("The @ symbol is being detected in URL");
+      }
+      else if(redirectDectNumber[index] == 1)
+      {
+        alert("URL is trying to redirect you to another website");
+      }
+      else if(urlDepthNumber[index] >= 6)
+      {
+        alert("High URL depth detected");
+      }
+      else if(prefixSuffixDectNumber[index] == 1)
+      {
+        alert("- prefix/suffix in URL detected");
+      }
+      else if(shortenDetectNumber[index] == 1)
+      {
+        alert("Shortening URL service detected");
+      }
+      else if(urlLengthNumber[index] >= 51)
+      {
+        alert("URL length is " + urlLengthNumber[index]);
+      }
+      else
+      {
+        alert("Malicious URL");
       }
     }
 
@@ -130,7 +170,7 @@
     }
     else{  
       var cell =
-        '<tr><td class="col0 maliciousLink" style="background-color:lightgreen">' + url + '</td>' +
+        '<tr><td class="col0" style="background-color:lightgreen">' + url + '</td>' +
         '<td class="col1" style="background-color:lightgreen">' + prediction + '</td>' +
         '<td class="col1" style="background-color:lightgreen">' + probability + '%</td></tr>'
     }
