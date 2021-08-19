@@ -96,11 +96,11 @@
 
       if(uri[index].match(digitRegex))
         {
-          alert("URL contains long string of numbers");
+          alert("URL contains a long string of numbers");
         }
       else if(uri[index].match(directoryRegex))
       {
-        alert("Directory is very long string");
+        alert("Directory is very long in URL");
       }
       else if(ipDectNumber[index] == 1)
       {
@@ -108,7 +108,7 @@
       }
       else if(atDectNumber[index] == 1)
       {
-        alert("The @ symbol is being detected in URL");
+        alert("The @ symbol which is not supposed to be used in URLs is being detected in this URL");
       }
       else if(redirectDectNumber[index] == 1)
       {
@@ -128,11 +128,11 @@
       }
       else if(urlLengthNumber[index] >= 51)
       {
-        alert("URL length is " + urlLengthNumber[index]);
+        alert("URL length is " + urlLengthNumber[index] + " characters long");
       }
       else
       {
-        alert("Malicious URL");
+        alert("Detected malicious URL that is of unknown pattern");
       }
     }
 
