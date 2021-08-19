@@ -4,6 +4,7 @@ import joblib
 from pydantic import BaseModel
 from typing import List
 import socket
+import urllib
 from urllib.parse import urlencode, urlparse
 import re
 
@@ -13,12 +14,6 @@ class Input(BaseModel):
 
 
 result = []
-ip = 0
-at = 0
-depth = 0
-redirect = 0
-prefixSuffix = 0
-urlshorten = 0
 
 app = FastAPI()
 
@@ -65,7 +60,15 @@ async def predict(inputs: Input):
         else:
             redirect = 0
 
-        if "-" in urlparse(url).netloc:
+        p = urllib.parse.urlparse(url, 'http')
+        netloc = p.netloc or p.path
+        path = p.path if p.netloc else ''
+        if not netloc.startswith('www.'):
+            netloc = 'www.' + netloc
+
+        p = (urllib.parse.ParseResult('http', netloc, path, *p[3:])).geturl()
+
+        if "-" in urlparse(p).netloc:
             prefixSuffix = 1
         else:
             prefixSuffix = 0
