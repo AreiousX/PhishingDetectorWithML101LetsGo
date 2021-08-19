@@ -7,9 +7,15 @@ function DOMtoString(document_root) {
     var html = document.getElementsByClassName("a3s aiL")[0].innerHTML
     html = html.match(expression);
     html = html.join(" ");
-    html = html.replace(/<a href=/g, '')
-    html = html.replace(/<a\s+(?:[^>]*?\s+)?href=/g, '')
-    html = html.replace(/"/g, '')
+    html = html.replace(/<a href=/g, '');
+    html = html.replace(/<a\s+(?:[^>]*?\s+)?href=/g, '');
+    //html = html.replace(/"/g, '');
+    html = html.replace(/https:\/\/www./g, '');
+    html = html.replace(/http:\/\/www./g, '');
+    html = html.replace(/https:\/\//g, '');
+    html = html.replace(/http:\/\//g, '');
+    html = html.replace(/ /g, ', ');
+    //html = html.split(" ");
     return html;
 }
 

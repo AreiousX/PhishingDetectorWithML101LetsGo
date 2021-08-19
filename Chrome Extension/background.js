@@ -11,9 +11,9 @@
   
   window.onload = onWindowLoad;*/
 
-  if(window.location.href.includes('https://')){
+  /*if(window.location.href.includes('https://')){
       alert("Secured Website");
   }
   else{
       alert("Unsecured Website!!");
-  }
+  }*/
