@@ -1,0 +1,9 @@
+https://github.com/mitchellkrogza/Phishing.Database
+https://github.com/carlospolop/MalwareWorld
+https://securitytrails.com/
+https://www.kaggle.com/taruntiwarihp/phishing-site-urls
+https://www.kaggle.com/teseract/urldataset?select=urldata.csv
+https://www.kaggle.com/antonyj453/urldataset
+https://github.com/TanusreeSharma/phishingdata-Analysis
+https://github.com/sagarpatel24/Phishing-Detection-ML/tree/master/Back%20End/datasets
+https://www.kaggle.com/aktank/url-detection
