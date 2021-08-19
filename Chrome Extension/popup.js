@@ -1,5 +1,3 @@
-
-
 chrome.runtime.onMessage.addListener(function (request, sender) {
     if (request.action == "getSource") {
         let html = request.source;
@@ -24,7 +22,6 @@ chrome.runtime.onMessage.addListener(function (request, sender) {
 });
 
 function onWindowLoad() {
-
     chrome.tabs.executeScript(null, { file: "getPagesSource.js" }, function () {
         // If you try and inject into an extensions page or the webstore/NTP you'll get an error
         if (chrome.runtime.lastError) {
@@ -35,6 +32,9 @@ function onWindowLoad() {
 }
 
 function fillTable(response) {
+    waitForLoad(3000);
+    var subtitle = document.getElementById('subtitle');
+    subtitle.remove();
     var table = document.getElementById('urlTable');
     var counter = document.getElementById('urlCounter');
     var totalCount = 0;
@@ -126,7 +126,7 @@ function fillTable(response) {
                 if (alertContent == "") {
                     alertContent += ("URL of unkown pattern detected.\n")
                 }
-            alert(alertContent)
+                alert(alertContent)
             }
 
         );
@@ -169,6 +169,15 @@ function formTableforDisplay(content) {
             '<td class="col1" style="background-color:lightgreen">' + probability + '%</td></tr>'
     }
     return cell;
+}
+
+function waitForLoad(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
 }
 
 window.onload = onWindowLoad;
