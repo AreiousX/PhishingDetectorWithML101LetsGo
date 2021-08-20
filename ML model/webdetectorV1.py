@@ -19,7 +19,7 @@ app = FastAPI()
 
 # pkl
 phishing_detector = open(
-    'E:/Codes/Python/ML Phising Detector/phishing_detector_1.pkl', 'rb')
+    'phishing_detector.pkl', 'rb')
 phishing_detector_ls = joblib.load(phishing_detector)
 
 # ML Aspect
